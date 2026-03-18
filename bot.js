@@ -383,10 +383,20 @@ async function poll() {
 }
 
 // ─── KEEP-ALIVE SERVER (required by Render) ───────────────
-http.createServer((req, res) => {
-  res.writeHead(200);
-  res.end('DevDetector bot is running');
-}).listen(process.env.PORT || 3000, () => {
-  console.log('DevDetector bot started');
+const PORT = process.env.PORT || 3000;
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('DevDetector bot is running
+');
+});
+
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server listening on port ${PORT}`);
+  console.log('Starting Telegram poll loop...');
   poll();
+});
+
+server.on('error', (err) => {
+  console.error('Server error:', err);
 });
