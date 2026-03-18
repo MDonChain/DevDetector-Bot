@@ -1,0 +1,12 @@
+{
+  "name": "devdetector-bot",
+  "version": "1.0.0",
+  "description": "DevDetector Telegram bot",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
